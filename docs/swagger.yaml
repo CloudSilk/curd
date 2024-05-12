@@ -1,0 +1,3251 @@
+definitions:
+  curd.CellAttrs:
+    properties:
+      cellID:
+        type: string
+      fill:
+        type: string
+      fontSize:
+        type: integer
+      id:
+        type: string
+      isDefaultLabel:
+        type: boolean
+      linkHref:
+        type: string
+      magnet:
+        type: boolean
+      name:
+        type: string
+      other:
+        type: string
+      ref:
+        type: string
+      selectedFill:
+        type: string
+      selectedStroke:
+        type: string
+      stroke:
+        type: string
+      textAnchor:
+        type: string
+      textVerticalAnchor:
+        type: string
+    type: object
+  curd.CellConnecting:
+    properties:
+      anotherCell:
+        type: string
+      cellID:
+        type: string
+      direct:
+        type: integer
+      edge:
+        type: string
+      id:
+        type: string
+    type: object
+  curd.CellInfo:
+    properties:
+      attrs:
+        items:
+          $ref: '#/definitions/curd.CellAttrs'
+        type: array
+      common:
+        type: boolean
+      connectings:
+        items:
+          $ref: '#/definitions/curd.CellConnecting'
+        type: array
+      defaultEdge:
+        type: boolean
+      defaultLabel:
+        type: string
+      defaultLabelAttrs:
+        type: string
+      formDefaultValue:
+        description: 表单默认值,json格式
+        type: string
+      group:
+        type: string
+      height:
+        type: integer
+      height2:
+        type: integer
+      icon:
+        type: string
+      iconSource:
+        type: integer
+      id:
+        type: string
+      idPrefix:
+        type: string
+      index:
+        type: integer
+      isEdge:
+        type: boolean
+      isMust:
+        description: 系统必须要有的数据
+        type: boolean
+      markup:
+        items:
+          $ref: '#/definitions/curd.CellMarkup'
+        type: array
+      mustSource:
+        type: boolean
+      mustTarget:
+        type: boolean
+      name:
+        type: string
+      other:
+        description: 其他属性
+        type: string
+      parent:
+        type: boolean
+      ports:
+        type: string
+      projectID:
+        type: string
+      propertyForm:
+        type: string
+      resizing:
+        type: boolean
+      shape:
+        type: string
+      system:
+        type: string
+      tenantID:
+        type: string
+      view:
+        type: string
+      width:
+        type: integer
+      width2:
+        type: integer
+    type: object
+  curd.CellMarkup:
+    properties:
+      attrs:
+        type: string
+      cellID:
+        type: string
+      children:
+        type: string
+      className:
+        type: string
+      groupSelector:
+        type: string
+      id:
+        type: string
+      index:
+        type: integer
+      isDefaultLabel:
+        type: boolean
+      other:
+        type: string
+      selector:
+        type: string
+      style:
+        type: string
+      tagName:
+        type: string
+      textContent:
+        type: string
+    type: object
+  curd.CommonResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  curd.DelRequest:
+    properties:
+      id:
+        type: string
+      tenantID:
+        type: string
+    type: object
+  curd.EnableRequest:
+    properties:
+      enable:
+        type: boolean
+      id:
+        type: string
+      tenantID:
+        type: string
+    type: object
+  curd.FileTemplateInfo:
+    properties:
+      body:
+        description: 一组模板ID
+        items:
+          type: string
+        type: array
+      dir:
+        description: 文件存放的目录
+        type: string
+      end:
+        description: 结尾模板ID
+        type: string
+      fileNameSuffix:
+        description: 文件名称后缀
+        type: string
+      group:
+        description: 分组
+        type: string
+      id:
+        type: string
+      language:
+        description: 编程语言
+        type: string
+      name:
+        description: 文件模版名称
+        type: string
+      package:
+        description: 包名
+        type: string
+      params:
+        description: 自定义参数
+        type: string
+      start:
+        description: 开头模板ID
+        type: string
+    type: object
+  curd.FormInfo:
+    properties:
+      createdAt:
+        type: integer
+      group:
+        type: string
+      id:
+        type: string
+      isMust:
+        description: 系统必须要有的数据
+        type: boolean
+      name:
+        type: string
+      pageName:
+        type: string
+      projectID:
+        type: string
+      public:
+        type: boolean
+      schema:
+        type: string
+      subform:
+        type: boolean
+      tenantID:
+        type: string
+      type:
+        type: string
+      updatedAt:
+        type: integer
+      versions:
+        items:
+          $ref: '#/definitions/curd.FormVersion'
+        type: array
+    type: object
+  curd.FormVersion:
+    properties:
+      createdAt:
+        type: string
+      description:
+        type: string
+      formID:
+        type: string
+      id:
+        type: string
+      schema:
+        type: string
+      version:
+        type: string
+    type: object
+  curd.FunctionalTemplateInfo:
+    properties:
+      description:
+        description: 描述
+        type: string
+      fileTemplateIDs:
+        description: 文件模版ID
+        items:
+          type: string
+        type: array
+      group:
+        description: 分组
+        type: string
+      id:
+        type: string
+      language:
+        description: 语音
+        type: string
+      name:
+        description: 名称
+        type: string
+      params:
+        description: 自定义参数
+        type: string
+    type: object
+  curd.GetAllCellResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.CellInfo'
+        type: array
+      message:
+        type: string
+    type: object
+  curd.GetAllFileTemplateResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.FileTemplateInfo'
+        type: array
+      message:
+        type: string
+    type: object
+  curd.GetAllFormResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.FormInfo'
+        type: array
+      message:
+        type: string
+    type: object
+  curd.GetAllFunctionalTemplateResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.FunctionalTemplateInfo'
+        type: array
+      message:
+        type: string
+    type: object
+  curd.GetAllPageResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.PageInfo'
+        type: array
+      message:
+        type: string
+    type: object
+  curd.GetAllSystemObjectResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.SystemObjectInfo'
+        type: array
+      message:
+        type: string
+    type: object
+  curd.GetCellDetailResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/curd.CellInfo'
+      message:
+        type: string
+    type: object
+  curd.GetFileTemplateDetailResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/curd.FileTemplateInfo'
+      message:
+        type: string
+    type: object
+  curd.GetFormDetailResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/curd.FormInfo'
+      message:
+        type: string
+    type: object
+  curd.GetFunctionalTemplateDetailResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/curd.FunctionalTemplateInfo'
+      message:
+        type: string
+    type: object
+  curd.GetPageDetailResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/curd.PageInfo'
+      message:
+        type: string
+    type: object
+  curd.GetSystemObjectDetailResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/curd.SystemObjectInfo'
+      message:
+        type: string
+    type: object
+  curd.GetVersionResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/curd.FormVersion'
+      message:
+        type: string
+    type: object
+  curd.PageButton:
+    properties:
+      enable:
+        description: 是否启用
+        type: boolean
+      expanded:
+        type: boolean
+      formID:
+        type: string
+      hiddenScript:
+        type: string
+      href:
+        type: string
+      hrefFunc:
+        type: string
+      id:
+        type: string
+      index:
+        type: integer
+      key:
+        type: string
+      label:
+        type: string
+      pageID:
+        type: string
+      permission:
+        description: 按钮权限
+        type: string
+      script:
+        type: string
+      showPosition:
+        description: 按钮显示位置，0-显示在列表行 1-在搜索框显示
+        type: integer
+      showType:
+        type: string
+    type: object
+  curd.PageField:
+    properties:
+      align:
+        description: 对齐方式
+        type: string
+      component:
+        type: string
+      componentProps:
+        type: string
+      copyable:
+        type: boolean
+      dataType:
+        type: string
+      ellipsis:
+        type: boolean
+      enableSort:
+        type: boolean
+      fixed:
+        type: string
+      id:
+        type: string
+      labelField:
+        type: string
+      name:
+        type: string
+      pageID:
+        type: string
+      rowKey:
+        type: boolean
+      showInTable:
+        type: boolean
+      sort:
+        type: integer
+      title:
+        type: string
+      valueEnum:
+        type: string
+      valueField:
+        type: string
+      width:
+        description: 列宽度
+        type: string
+    type: object
+  curd.PageInfo:
+    properties:
+      addDefaultValue:
+        type: string
+      addFormID:
+        type: string
+      bordered:
+        type: boolean
+      buttons:
+        items:
+          $ref: '#/definitions/curd.PageButton'
+        type: array
+      cardAvatarField:
+        type: string
+      cardContentField:
+        type: string
+      cardDescriptionField:
+        type: string
+      cardImageField:
+        type: string
+      cardLoadType:
+        type: integer
+      cardTitleField:
+        type: string
+      createdAt:
+        type: integer
+      description:
+        type: string
+      editFormID:
+        type: string
+      editable:
+        type: string
+      enable:
+        type: boolean
+      fields:
+        items:
+          $ref: '#/definitions/curd.PageField'
+        type: array
+      id:
+        type: string
+      isChild:
+        description: 子列表，应用于左右分栏
+        type: boolean
+      isMust:
+        description: 系统必须要有的数据
+        type: boolean
+      labelField:
+        type: string
+      listAvatarField:
+        type: string
+      listContentField:
+        type: string
+      listDescriptionField:
+        type: string
+      listExpandable:
+        type: boolean
+      listGridTypeColumn:
+        type: integer
+      listGridTypeGutter:
+        type: integer
+      listItemLayout:
+        type: string
+      listKeyField:
+        type: string
+      listLoadType:
+        type: integer
+      listTitleField:
+        type: string
+      loadDetailAfter:
+        type: string
+      loadDetailBefore:
+        type: string
+      metadataID:
+        type: string
+      name:
+        type: string
+      pageSize:
+        type: integer
+      pages:
+        description: 子列表的PageName,多个使用逗号隔开，应用于左右分栏等
+        type: string
+      path:
+        type: string
+      proListAvatarDataIndex:
+        type: string
+      proListAvatarRender:
+        type: string
+      proListAvatarValueType:
+        type: string
+      proListCardActionProps:
+        type: string
+      proListContentDataIndex:
+        type: string
+      proListContentRender:
+        type: string
+      proListContentValueType:
+        type: string
+      proListExtraDataIndex:
+        type: string
+      proListExtraRender:
+        type: string
+      proListExtraValueType:
+        type: string
+      proListGhost:
+        type: boolean
+      proListItemClick:
+        type: string
+      proListItemMouseEnter:
+        type: string
+      proListShowActions:
+        type: string
+      proListShowAvatar:
+        type: boolean
+      proListShowContent:
+        type: boolean
+      proListShowExtra:
+        type: string
+      proListShowMetaExtra:
+        type: boolean
+      proListShowMetaType:
+        type: boolean
+      proListShowSubTitle:
+        type: boolean
+      proListShowTitle:
+        type: boolean
+      proListShowType:
+        type: integer
+      proListSubTitleDataIndex:
+        type: string
+      proListSubTitleRender:
+        type: string
+      proListSubTitleValueType:
+        type: string
+      proListTitleDataIndex:
+        type: string
+      proListTitleRender:
+        type: string
+      proListTitleValueType:
+        type: string
+      proListTypeDataIndex:
+        type: string
+      proListTypeRender:
+        type: string
+      proListTypeValueType:
+        type: string
+      projectID:
+        type: string
+      queryAfter:
+        type: string
+      queryBefore:
+        type: string
+      scrollX:
+        type: integer
+      searchDefaultValue:
+        type: string
+      searchFormID:
+        type: string
+      showIndex:
+        type: boolean
+      showSelection:
+        type: boolean
+      submitAfter:
+        type: string
+      submitBefore:
+        type: string
+      tenantID:
+        type: string
+      title:
+        type: string
+      toolBar:
+        $ref: '#/definitions/curd.PageToolBar'
+      type:
+        type: integer
+      updatedAt:
+        type: integer
+      valueField:
+        type: string
+      viewFormID:
+        type: string
+    type: object
+  curd.PageToolBar:
+    properties:
+      addPermission:
+        description: 新增按钮权限
+        type: string
+      addScript:
+        description: 点击新增按钮时执行脚本
+        type: string
+      batchDelUri:
+        type: string
+      exportUri:
+        description: 导出API接口地址
+        type: string
+      fullScreen:
+        description: 是否显示全屏按钮
+        type: boolean
+      id:
+        type: string
+      importFormID:
+        type: string
+      importMaxCount:
+        type: integer
+      importMulti:
+        type: boolean
+      importUri:
+        type: string
+      pageID:
+        type: string
+      reload:
+        description: 是否显示刷新按钮
+        type: boolean
+      render:
+        type: string
+      rowSelection:
+        description: 是否显示可选框
+        type: boolean
+      setting:
+        description: 是否显示设置按钮
+        type: boolean
+      showAdd:
+        description: 是否显示新增按钮
+        type: boolean
+      showBatchDel:
+        description: 是否显示批量删除按钮
+        type: boolean
+      showExport:
+        description: 是否显示导出按钮
+        type: boolean
+      showImport:
+        type: boolean
+    type: object
+  curd.QueryCellResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.CellInfo'
+        type: array
+      message:
+        type: string
+      pages:
+        type: integer
+      records:
+        type: integer
+      total:
+        type: integer
+    type: object
+  curd.QueryFileTemplateResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.FileTemplateInfo'
+        type: array
+      message:
+        type: string
+      pages:
+        type: integer
+      records:
+        type: integer
+      total:
+        type: integer
+    type: object
+  curd.QueryFormResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.FormInfo'
+        type: array
+      message:
+        type: string
+      pages:
+        type: integer
+      records:
+        type: integer
+      total:
+        type: integer
+    type: object
+  curd.QueryFunctionalTemplateResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.FunctionalTemplateInfo'
+        type: array
+      message:
+        type: string
+      pages:
+        type: integer
+      records:
+        type: integer
+      total:
+        type: integer
+    type: object
+  curd.QueryPageResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.PageInfo'
+        type: array
+      message:
+        type: string
+      pages:
+        type: integer
+      records:
+        type: integer
+      total:
+        type: integer
+    type: object
+  curd.QuerySystemObjectResponse:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/curd.SystemObjectInfo'
+        type: array
+      message:
+        type: string
+      pages:
+        type: integer
+      records:
+        type: integer
+      total:
+        type: integer
+    type: object
+  curd.SystemObjectInfo:
+    properties:
+      code:
+        description: 代码
+        type: string
+      description:
+        description: 备注
+        type: string
+      displayName:
+        description: 显示名称
+        type: string
+      enable:
+        description: 是否启用
+        type: boolean
+      id:
+        type: string
+      language:
+        description: 编程语言
+        type: string
+      name:
+        description: 名称
+        type: string
+      type:
+        description: 类型 1-类 2-结构体 3-方法 4-代码
+        type: integer
+    type: object
+  http.AddRequest:
+    properties:
+      data:
+        additionalProperties: true
+        type: object
+    type: object
+  model.CommonDetailResponse:
+    properties:
+      code:
+        type: integer
+      current:
+        type: integer
+      data: {}
+      desc:
+        type: boolean
+      message:
+        type: string
+      orderField:
+        type: string
+      pageIndex:
+        type: integer
+      pageSize:
+        type: integer
+      pages:
+        type: integer
+      records:
+        type: integer
+      total:
+        type: integer
+    type: object
+  model.QueryResponse:
+    properties:
+      code:
+        type: integer
+      current:
+        type: integer
+      data:
+        items:
+          additionalProperties: true
+          type: object
+        type: array
+      desc:
+        type: boolean
+      message:
+        type: string
+      orderField:
+        type: string
+      pageIndex:
+        type: integer
+      pageSize:
+        type: integer
+      pages:
+        type: integer
+      records:
+        type: integer
+      total:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api//metadata/import:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 导入
+      parameters:
+      - description: Bearer+空格+Token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 要上传的文件
+        in: formData
+        name: files
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导入
+      tags:
+      - Metadata管理
+  /api/curd/cell/add:
+    post:
+      consumes:
+      - application/json
+      description: 新增
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Add Cell
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.CellInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 新增
+      tags:
+      - Cell管理
+  /api/curd/cell/all:
+    get:
+      consumes:
+      - application/json
+      description: 查询所有
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetAllCellResponse'
+      summary: 查询所有
+      tags:
+      - Cell管理
+  /api/curd/cell/copy:
+    post:
+      consumes:
+      - application/json
+      description: 复制
+      parameters:
+      - description: Copy Cell
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 复制
+      tags:
+      - Cell管理
+  /api/curd/cell/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Delete Cell
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 删除
+      tags:
+      - Cell管理
+  /api/curd/cell/detail:
+    get:
+      consumes:
+      - application/json
+      description: 查询明细
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetCellDetailResponse'
+      summary: 查询明细
+      tags:
+      - Cell管理
+  /api/curd/cell/enable:
+    post:
+      consumes:
+      - application/json
+      description: 禁用/启用
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Enable/Disable Cell
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.EnableRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 禁用/启用
+      tags:
+      - Cell管理
+  /api/curd/cell/export:
+    get:
+      consumes:
+      - application/json
+      description: 导出
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: Must Source
+        in: query
+        name: mustSource
+        type: string
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: 系统
+        in: query
+        name: system
+        type: string
+      - description: 视图
+        in: query
+        name: view
+        type: string
+      - description: 形状
+        in: query
+        name: shape
+        type: string
+      - description: 边
+        in: query
+        name: isEdge
+        type: string
+      - description: 是否常用
+        in: query
+        name: common
+        type: string
+      - description: 调整大小
+        in: query
+        name: resizing
+        type: string
+      - description: 分组
+        in: query
+        name: group
+        type: string
+      - description: Must Target
+        in: query
+        name: mustTarget
+        type: string
+      - description: IDs
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导出
+      tags:
+      - Cell管理
+  /api/curd/cell/import:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 导入
+      parameters:
+      - description: Bearer+空格+Token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 要上传的文件
+        in: formData
+        name: files
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导入
+      tags:
+      - Cell管理
+  /api/curd/cell/query:
+    get:
+      consumes:
+      - application/json
+      description: 分页查询
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: Must Source
+        in: query
+        name: mustSource
+        type: string
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: 系统
+        in: query
+        name: system
+        type: string
+      - description: 视图
+        in: query
+        name: view
+        type: string
+      - description: 形状
+        in: query
+        name: shape
+        type: string
+      - description: 边
+        in: query
+        name: isEdge
+        type: string
+      - description: 是否常用
+        in: query
+        name: common
+        type: string
+      - description: 调整大小
+        in: query
+        name: resizing
+        type: string
+      - description: 分组
+        in: query
+        name: group
+        type: string
+      - description: Must Target
+        in: query
+        name: mustTarget
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.QueryCellResponse'
+      summary: 分页查询
+      tags:
+      - Cell管理
+  /api/curd/cell/update:
+    put:
+      consumes:
+      - application/json
+      description: 更新
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update Cell
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.CellInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 更新
+      tags:
+      - Cell管理
+  /api/curd/common/{pageName}/add:
+    post:
+      consumes:
+      - application/json
+      description: 新增
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Add Object
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/http.AddRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 新增
+      tags:
+      - 通用增删改查接口
+  /api/curd/common/{pageName}/all:
+    get:
+      consumes:
+      - application/json
+      description: 查询所有
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.QueryResponse'
+      summary: 查询所有
+      tags:
+      - 通用增删改查接口
+  /api/curd/common/{pageName}/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Delete Page
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 删除
+      tags:
+      - 通用增删改查接口
+  /api/curd/common/{pageName}/detail:
+    get:
+      consumes:
+      - application/json
+      description: 查询明细
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.CommonDetailResponse'
+      summary: 查询明细
+      tags:
+      - 通用增删改查接口
+    post:
+      consumes:
+      - application/json
+      description: 复制
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: Copy Page
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 复制
+      tags:
+      - 通用增删改查接口
+  /api/curd/common/{pageName}/detail/name:
+    get:
+      consumes:
+      - application/json
+      description: 根据名称查询明细
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: 名称
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.CommonDetailResponse'
+      summary: 根据名称查询明细
+      tags:
+      - 通用增删改查接口
+  /api/curd/common/{pageName}/enable:
+    post:
+      consumes:
+      - application/json
+      description: 禁用/启用
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Enable/Disable Page
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.EnableRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 禁用/启用
+      tags:
+      - 通用增删改查接口
+  /api/curd/common/{pageName}/query:
+    get:
+      consumes:
+      - application/json
+      description: 分页查询
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.QueryResponse'
+      summary: 分页查询
+      tags:
+      - 通用增删改查接口
+  /api/curd/common/{pageName}/tree:
+    get:
+      consumes:
+      - application/json
+      description: 树形数据
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.QueryResponse'
+      summary: 树形数据
+      tags:
+      - 通用增删改查接口
+  /api/curd/common/{pageName}/update:
+    put:
+      consumes:
+      - application/json
+      description: 更新
+      parameters:
+      - description: 页面配置名称
+        in: path
+        name: pageName
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update Object
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/http.AddRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 更新
+      tags:
+      - 通用增删改查接口
+  /api/curd/filetemplate/add:
+    post:
+      consumes:
+      - application/json
+      description: 新增
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Add FileTemplate
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.FileTemplateInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 新增
+      tags:
+      - 文件模版管理
+  /api/curd/filetemplate/all:
+    get:
+      consumes:
+      - application/json
+      description: 查询所有
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetAllFileTemplateResponse'
+      summary: 查询所有
+      tags:
+      - 文件模版管理
+  /api/curd/filetemplate/copy:
+    post:
+      consumes:
+      - application/json
+      description: 复制
+      parameters:
+      - description: Copy FileTemplate
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 复制
+      tags:
+      - 文件模版管理
+  /api/curd/filetemplate/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Delete FileTemplate
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 删除
+      tags:
+      - 文件模版管理
+  /api/curd/filetemplate/detail:
+    get:
+      consumes:
+      - application/json
+      description: 查询明细
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetFileTemplateDetailResponse'
+      summary: 查询明细
+      tags:
+      - 文件模版管理
+  /api/curd/filetemplate/export:
+    get:
+      consumes:
+      - application/json
+      description: 导出
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 文件名称
+        in: query
+        name: name
+        type: string
+      - description: IDs
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导出
+      tags:
+      - 文件模版管理
+  /api/curd/filetemplate/import:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 导入
+      parameters:
+      - description: Bearer+空格+Token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 要上传的文件
+        in: formData
+        name: files
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导入
+      tags:
+      - 文件模版管理
+  /api/curd/filetemplate/query:
+    get:
+      consumes:
+      - application/json
+      description: 分页查询
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 文件名称
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.QueryFileTemplateResponse'
+      summary: 分页查询
+      tags:
+      - 文件模版管理
+  /api/curd/filetemplate/update:
+    put:
+      consumes:
+      - application/json
+      description: 更新
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update FileTemplate
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.FileTemplateInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 更新
+      tags:
+      - 文件模版管理
+  /api/curd/functionaltemplate/add:
+    post:
+      consumes:
+      - application/json
+      description: 新增
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Add FunctionalTemplate
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.FunctionalTemplateInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 新增
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/all:
+    get:
+      consumes:
+      - application/json
+      description: 查询所有
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetAllFunctionalTemplateResponse'
+      summary: 查询所有
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/copy:
+    post:
+      consumes:
+      - application/json
+      description: 复制
+      parameters:
+      - description: Copy FunctionalTemplate
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 复制
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Delete FunctionalTemplate
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 删除
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/detail:
+    get:
+      consumes:
+      - application/json
+      description: 查询明细
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetFunctionalTemplateDetailResponse'
+      summary: 查询明细
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/enable:
+    post:
+      consumes:
+      - application/json
+      description: 禁用/启用
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Enable/Disable FunctionalTemplate
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.EnableRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 禁用/启用
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/export:
+    get:
+      consumes:
+      - application/json
+      description: 导出
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 语音
+        in: query
+        name: language
+        type: string
+      - description: 分组
+        in: query
+        name: group
+        type: string
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: IDs
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导出
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/import:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 导入
+      parameters:
+      - description: Bearer+空格+Token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 要上传的文件
+        in: formData
+        name: files
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导入
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/query:
+    get:
+      consumes:
+      - application/json
+      description: 分页查询
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 语音
+        in: query
+        name: language
+        type: string
+      - description: 分组
+        in: query
+        name: group
+        type: string
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.QueryFunctionalTemplateResponse'
+      summary: 分页查询
+      tags:
+      - 功能模版管理
+  /api/curd/functionaltemplate/update:
+    put:
+      consumes:
+      - application/json
+      description: 更新
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update FunctionalTemplate
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.FunctionalTemplateInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 更新
+      tags:
+      - 功能模版管理
+  /api/curd/metadata/export:
+    get:
+      consumes:
+      - application/json
+      description: 导出
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: IDs
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导出
+      tags:
+      - Metadata管理
+  /api/curd/page/add:
+    post:
+      consumes:
+      - application/json
+      description: 新增页面
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Add Page
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.PageInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 新增页面
+      tags:
+      - 页面配置
+  /api/curd/page/all:
+    get:
+      consumes:
+      - application/json
+      description: 查询所有页面配置
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetAllPageResponse'
+      summary: 查询所有页面配置
+      tags:
+      - 页面配置
+  /api/curd/page/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除页面配置
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Delete Page
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 删除页面配置
+      tags:
+      - 页面配置
+  /api/curd/page/detail:
+    get:
+      consumes:
+      - application/json
+      description: 查询明细
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetPageDetailResponse'
+      summary: 查询明细
+      tags:
+      - 页面配置
+    post:
+      consumes:
+      - application/json
+      description: 复制页面配置
+      parameters:
+      - description: Copy Page
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 复制页面配置
+      tags:
+      - 页面配置
+  /api/curd/page/detail/name:
+    get:
+      consumes:
+      - application/json
+      description: 根据名称查询明细
+      parameters:
+      - description: 名称
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetPageDetailResponse'
+      summary: 根据名称查询明细
+      tags:
+      - 页面配置
+  /api/curd/page/enable:
+    post:
+      consumes:
+      - application/json
+      description: 禁用/启用页面配置
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Enable/Disable Page
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.EnableRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 禁用/启用页面配置
+      tags:
+      - 页面配置
+  /api/curd/page/export:
+    get:
+      consumes:
+      - application/json
+      description: 导出
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: 是否启用
+        in: query
+        name: enable
+        type: integer
+      - description: 类型
+        in: query
+        name: type
+        type: integer
+      - description: IDs
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.QueryPageResponse'
+      summary: 导出
+      tags:
+      - 页面配置
+  /api/curd/page/import:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 导入
+      parameters:
+      - description: Bearer+空格+Token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 要上传的文件
+        in: formData
+        name: files
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导入
+      tags:
+      - 页面配置
+  /api/curd/page/query:
+    get:
+      consumes:
+      - application/json
+      description: 分页查询
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: 是否启用
+        in: query
+        name: enable
+        type: integer
+      - description: 类型
+        in: query
+        name: type
+        type: integer
+      - description: IDs
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.QueryPageResponse'
+      summary: 分页查询
+      tags:
+      - 页面配置
+  /api/curd/page/update:
+    put:
+      consumes:
+      - application/json
+      description: 更新页面配置
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update Page
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.PageInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 更新页面配置
+      tags:
+      - 页面配置
+  /api/curd/systemobject/add:
+    post:
+      consumes:
+      - application/json
+      description: 新增
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Add SystemObject
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.SystemObjectInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 新增
+      tags:
+      - 系统定义的对象管理
+  /api/curd/systemobject/all:
+    get:
+      consumes:
+      - application/json
+      description: 查询所有
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetAllSystemObjectResponse'
+      summary: 查询所有
+      tags:
+      - 系统定义的对象管理
+  /api/curd/systemobject/copy:
+    post:
+      consumes:
+      - application/json
+      description: 复制
+      parameters:
+      - description: Copy SystemObject
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 复制
+      tags:
+      - 系统定义的对象管理
+  /api/curd/systemobject/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Delete SystemObject
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 删除
+      tags:
+      - 系统定义的对象管理
+  /api/curd/systemobject/detail:
+    get:
+      consumes:
+      - application/json
+      description: 查询明细
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetSystemObjectDetailResponse'
+      summary: 查询明细
+      tags:
+      - 系统定义的对象管理
+  /api/curd/systemobject/enable:
+    post:
+      consumes:
+      - application/json
+      description: 禁用/启用
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Enable/Disable SystemObject
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.EnableRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 禁用/启用
+      tags:
+      - 系统定义的对象管理
+  /api/curd/systemobject/query:
+    get:
+      consumes:
+      - application/json
+      description: 分页查询
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: pageIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: pageSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: 编程语言
+        in: query
+        name: language
+        type: string
+      - description: 类型
+        in: query
+        name: type
+        type: integer
+      - description: 是否启用
+        in: query
+        name: enable
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.QuerySystemObjectResponse'
+      summary: 分页查询
+      tags:
+      - 系统定义的对象管理
+  /api/curd/systemobject/update:
+    put:
+      consumes:
+      - application/json
+      description: 更新
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update SystemObject
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.SystemObjectInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 更新
+      tags:
+      - 系统定义的对象管理
+  /api/curd/template/copy:
+    post:
+      consumes:
+      - application/json
+      description: 复制
+      parameters:
+      - description: Copy Template
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 复制
+      tags:
+      - 代码模板管理
+  /api/form/add:
+    post:
+      consumes:
+      - application/json
+      description: 新增表单
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Add Form
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.FormInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 新增表单
+      tags:
+      - 表单管理
+  /api/form/all:
+    get:
+      consumes:
+      - application/json
+      description: 查询所有表单管理
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetAllFormResponse'
+      summary: 查询所有表单管理
+      tags:
+      - 表单管理
+  /api/form/copy:
+    post:
+      consumes:
+      - application/json
+      description: 复制表单
+      parameters:
+      - description: Copy Form
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 复制表单
+      tags:
+      - 表单管理
+  /api/form/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除表单管理
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Delete Form
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.DelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 删除表单管理
+      tags:
+      - 表单管理
+  /api/form/detail:
+    get:
+      consumes:
+      - application/json
+      description: 查询明细
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetFormDetailResponse'
+      summary: 查询明细
+      tags:
+      - 表单管理
+  /api/form/export:
+    get:
+      consumes:
+      - application/json
+      description: 导出
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: formIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: formSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: 表单名称
+        in: query
+        name: pageName
+        type: string
+      - description: 分组
+        in: query
+        name: group
+        type: string
+      - description: IDs
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导出
+      tags:
+      - 表单管理
+  /api/form/import:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 导入
+      parameters:
+      - description: Bearer+空格+Token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 要上传的文件
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 导入
+      tags:
+      - 表单管理
+  /api/form/publish:
+    post:
+      consumes:
+      - application/json
+      description: 发布表单版本
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update Form
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.FormVersion'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 发布表单版本
+      tags:
+      - 表单管理
+  /api/form/query:
+    get:
+      consumes:
+      - application/json
+      description: 分页查询
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 从1开始
+        in: query
+        name: formIndex
+        type: integer
+      - description: 默认每页10条
+        in: query
+        name: formSize
+        type: integer
+      - description: 排序字段
+        in: query
+        name: orderField
+        type: string
+      - description: 是否倒序排序
+        in: query
+        name: desc
+        type: boolean
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: 表单名称
+        in: query
+        name: pageName
+        type: string
+      - description: 分组
+        in: query
+        name: group
+        type: string
+      - description: IDs
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.QueryFormResponse'
+      summary: 分页查询
+      tags:
+      - 表单管理
+  /api/form/schema:
+    put:
+      consumes:
+      - application/json
+      description: 更新表单Schema
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update Form
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.FormInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 更新表单Schema
+      tags:
+      - 表单管理
+  /api/form/switch:
+    post:
+      consumes:
+      - application/json
+      description: 切换表单版本
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Version ID
+        in: query
+        name: versionID
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 切换表单版本
+      tags:
+      - 表单管理
+  /api/form/update:
+    put:
+      consumes:
+      - application/json
+      description: 更新表单管理
+      parameters:
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: Update Form
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/curd.FormInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.CommonResponse'
+      summary: 更新表单管理
+      tags:
+      - 表单管理
+  /api/form/version/detail:
+    get:
+      consumes:
+      - application/json
+      description: 查询明细
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: jwt token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/curd.GetVersionResponse'
+      summary: 查询明细
+      tags:
+      - 表单管理
+swagger: "2.0"

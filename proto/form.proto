@@ -1,0 +1,126 @@
+syntax="proto3";
+package curd;
+option go_package = "./;curd";
+
+option java_multiple_files = true;
+option java_package = "cn.atali.curd";
+option java_outer_classname = "FormProto";
+option objc_class_prefix = "FORMSRV";
+
+import "curd_common.proto";
+
+service Form{
+    rpc Add(FormInfo)returns(CommonResponse){}
+    rpc Update(FormInfo)returns(CommonResponse){}
+    rpc Delete(DelRequest)returns(CommonResponse){}
+    rpc Query(QueryFormRequest)returns(QueryFormResponse){}
+    rpc GetAll(GetAllRequest)returns(GetAllFormRequest){}
+    rpc GetDetail(GetFormDetailRequest)returns(GetFormDetailResponse){}
+    rpc GetVersion(DelRequest)returns(GetVersionResponse){}
+}
+
+message FormInfo{
+    string id=1;
+    string name=2;
+    string pageName=3;
+    string group=4;
+    string schema=5;
+    repeated FormVersion versions=6;
+    int64 createdAt=7;
+    int64 updatedAt=8;
+    string tenantID=9;
+    string type=10;
+    bool public=11;
+    bool subform=12;
+    string projectID=13;
+    //系统必须要有的数据
+    bool isMust=14;
+}
+
+message FormVersion{
+    string id=1;
+    string formID=2;
+    string version=3;
+    string schema=4;
+    string description=5;
+    string createdAt=6;
+}
+
+message QueryFormRequest{
+    // @inject_tag: uri:"pageIndex" form:"pageIndex"
+    int64 pageIndex=1;
+    // @inject_tag: uri:"pageSize" form:"pageSize"
+    int64 pageSize=2;
+    // @inject_tag: uri:"orderField" form:"orderField"
+    string orderField=3;
+    // @inject_tag: uri:"desc" form:"desc"
+    bool desc=4;
+    // @inject_tag: uri:"name" form:"name"
+    string name=5;
+    // @inject_tag: uri:"pageName" form:"pageName"
+    string pageName=6;
+    // @inject_tag: uri:"group" form:"group"
+    string group=7;
+    // @inject_tag: uri:"ids" form:"ids"
+    repeated string ids=8;
+    // @inject_tag: uri:"type" form:"type"
+    string type=10;
+    // @inject_tag: uri:"public" form:"public"
+    int32 public=11;
+    // @inject_tag: uri:"tenantID" form:"tenantID"
+    string tenantID=12;
+    // @inject_tag: uri:"subform" form:"subform"
+    int32 subform=13;
+    // @inject_tag: uri:"projectID" form:"projectID"
+    string projectID=14;
+    // 包含基础表单数据,例如用户管理、角色管理等
+    // @inject_tag: uri:"inclusiveBasic" form:"inclusiveBasic"
+    bool inclusiveBasic=15;
+}
+
+message QueryFormResponse{
+    Code code=1;
+    string message=2;
+    repeated FormInfo data=3;
+    int64 pages=4;
+    int64 records=5;
+    int64 total=6;
+}
+
+message GetAllFormResponse{
+    Code code=1;
+    string message=2;
+    repeated FormInfo data=3;
+}
+
+message GetFormDetailResponse{
+    Code code=1;
+    string message=2;
+    FormInfo data=3;
+}
+
+message GetVersionResponse{
+    Code code=1;
+    string message=2;
+    FormVersion data=3;
+}
+
+message GetFormDetailRequest{
+    // @inject_tag: uri:"id" form:"id"
+    string id=1;
+    string tenantID=2;
+    bool containerVersions=3;
+}
+
+message GetAllFormRequest{
+    // @inject_tag: uri:"subform" form:"subform"
+    int32 subform=1;
+    // @inject_tag: uri:"tenantID" form:"tenantID"
+    string tenantID=2;
+    // @inject_tag: uri:"type" form:"type"
+    string type=3;
+    // @inject_tag: uri:"public" form:"public"
+    int32 public=4;
+    // @inject_tag: uri:"projectID" form:"projectID"
+    string projectID=5;
+}

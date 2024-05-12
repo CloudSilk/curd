@@ -1,0 +1,169 @@
+syntax="proto3";
+
+option java_multiple_files = true;
+option java_package = "cn.atali.curd";
+option java_outer_classname = "CellProto";
+option objc_class_prefix = "CELLSRV";
+
+package curd;
+option go_package = "./;curd";
+
+import "curd_common.proto";
+
+service Cell{
+    rpc Add(CellInfo)returns(CommonResponse){}
+    rpc Update(CellInfo)returns(CommonResponse){}
+    rpc Delete(DelRequest)returns(CommonResponse){}
+    rpc Query(QueryCellRequest)returns(QueryCellResponse){}
+    rpc GetAll(GetAllCellRequest)returns(GetAllCellResponse){}
+    rpc GetDetail(GetDetailRequest)returns(GetCellDetailResponse){}
+    rpc Copy(GetDetailRequest)returns(CommonResponse){}
+    rpc Enable(EnableRequest)returns(CommonResponse){}
+}
+
+message CellInfo {
+    string id=1;
+	repeated CellMarkup markup=2;
+	bool mustSource=3;
+	int32 height=4;
+	string name=5;
+	string system=6;
+	string defaultLabel=7;
+	string view=8;
+	string icon=9;
+	string propertyForm=10;
+	repeated CellAttrs attrs=11;
+	string idPrefix=12;
+	int32 iconSource=13;
+	string shape=14;
+	bool isEdge=15;
+	bool common=16;
+	bool resizing=17;
+	string group=18;
+	bool mustTarget=19;
+	int32 width=20;
+    string tenantID=21;
+    int32 height2=22;
+    int32 width2=23;
+    bool parent=24;
+    int32 index=25;
+    bool defaultEdge=26;
+    repeated CellConnecting connectings=27;
+    //其他属性
+    string other=28;
+    string defaultLabelAttrs=29;
+    string projectID=30;
+    string ports=31;
+    //系统必须要有的数据
+    bool isMust=32;
+    //表单默认值,json格式
+    string formDefaultValue=33;
+}
+
+
+message CellMarkup {
+    string id=1;
+	string textContent=2;
+	string cellID=3;
+	string other=4;
+	string children=5;
+	string className=6;
+	string selector=7;
+	string groupSelector=8;
+	string tagName=9;
+	string attrs=10;
+	string style=11;
+    int32 index=12;
+    bool isDefaultLabel=13;
+} 
+message CellAttrs {
+    string id=1;
+	string stroke=2;
+	int32 fontSize=3;
+	string other=4;
+	string textAnchor=5;
+	string name=6;
+	string fill=7;
+	string ref=8;
+	bool magnet=9;
+	string textVerticalAnchor=10;
+	string cellID=11;
+    string selectedFill=12;
+    string selectedStroke=13;
+    bool isDefaultLabel=14;
+    string linkHref=15;
+}
+
+message CellConnecting{
+    string id=1;
+    string cellID=2;
+    string anotherCell=3;
+    string edge=4;
+    int32 direct=5;
+}
+
+
+message QueryCellRequest{
+    // @inject_tag: uri:"pageIndex" form:"pageIndex"
+    int64 pageIndex=1;
+    // @inject_tag: uri:"pageSize" form:"pageSize"
+    int64 pageSize=2;
+    // @inject_tag: uri:"orderField" form:"orderField"
+    string orderField=3;
+    // @inject_tag: uri:"desc" form:"desc"
+    bool desc=4;
+    // @inject_tag: uri:"mustSource" form:"mustSource"
+    bool mustSource=5;
+    // @inject_tag: uri:"name" form:"name"
+    string name=6;
+    // @inject_tag: uri:"system" form:"system"
+    string system=7;
+    // @inject_tag: uri:"view" form:"view"
+    string view=8;
+    // @inject_tag: uri:"shape" form:"shape"
+    string shape=9;
+    // @inject_tag: uri:"isEdge" form:"isEdge"
+    int32 isEdge=10;
+    // @inject_tag: uri:"common" form:"common"
+    bool common=11;
+    // @inject_tag: uri:"resizing" form:"resizing"
+    bool resizing=12;
+    // @inject_tag: uri:"group" form:"group"
+    string group=13;
+    // @inject_tag: uri:"mustTarget" form:"mustTarget"
+    bool mustTarget=14;
+    // @inject_tag: uri:"tenantID" form:"tenantID"
+    string tenantID=15;
+    // @inject_tag: uri:"projectID" form:"projectID"
+    string projectID=16;
+}
+
+message QueryCellResponse{
+    Code code=1;
+    string message=2;
+    repeated CellInfo data=3;
+    int64 pages=4;
+    int64 records=5;
+    int64 total=6;
+}
+
+message GetAllCellResponse{
+    Code code=1;
+    string message=2;
+    repeated CellInfo data=3;
+}
+
+message GetCellDetailResponse{
+    Code code=1;
+    string message=2;
+    CellInfo data=3;
+}
+
+message GetAllCellRequest{
+    // @inject_tag: uri:"system" form:"system"
+    string system=1;
+    // @inject_tag: uri:"tenantID" form:"tenantID"
+    string tenantID=2;
+    // @inject_tag: uri:"projectID" form:"projectID"
+    string projectID=3;
+}

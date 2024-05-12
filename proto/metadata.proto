@@ -1,0 +1,116 @@
+syntax="proto3";
+
+option java_multiple_files = true;
+option java_package = "cn.atali.curd";
+option java_outer_classname = "MetadataProto";
+option objc_class_prefix = "METADATASRV";
+
+package curd;
+option go_package = "./;curd";
+
+import "curd_common.proto";
+
+service Metadata{
+    rpc Add(MetadataInfo)returns(CommonResponse){}
+    rpc Update(MetadataInfo)returns(CommonResponse){}
+    rpc Delete(DelRequest)returns(CommonResponse){}
+    rpc Query(QueryMetadataRequest)returns(QueryMetadataResponse){}
+    rpc GetAll(QueryMetadataRequest)returns(GetAllMetadataResponse){}
+    rpc GetDetail(GetDetailRequest)returns(GetMetadataDetailResponse){}
+    rpc Copy(GetDetailRequest)returns(CommonResponse){}
+}
+
+message MetadataInfo{
+    string id=1;
+    string name=2;
+    string displayName=3;
+    int32 level=4;
+    string parentID=5;
+    string description=6;
+    string package=7;
+    repeated MetadataField metadataFields=9;
+    repeated MetadataInfo children=10;
+    string system=11;
+    string projectID=12;
+    string tenantID=13;
+    //系统必须要有的数据
+    bool isMust=14;
+}
+
+
+message MetadataField{
+    string id=1;
+    string metadataID=2;
+    string name=3;
+    string type=4;
+    int32 length=5;
+    bool notNull=6;
+    string comment=7;
+    bool isArray=8;
+    string refMetadata=9;
+    string displayName=10;
+    bool showInTable=11;
+    bool showInEdit=12;
+    string component=13;
+    bool unique=14;
+    bool index=15;
+    string defaultValue=16;
+    bool showInQuery=17;
+    int32 order=18;
+    bool like=19;
+    bool copier=20;
+    //不生成数据库表字段
+    bool dotNotGen=21;
+    //转换函数 PB转数据库结构体
+    string pbToStruct=22;
+    //转换函数 数据库结构体转PB
+    string structToPB=23;
+}
+
+message QueryMetadataRequest{
+    // @inject_tag: uri:"pageIndex" form:"pageIndex"
+    int64 pageIndex=1;
+    // @inject_tag: uri:"pageSize" form:"pageSize"
+    int64 pageSize=2;
+    // @inject_tag: uri:"orderField" form:"orderField"
+    string orderField=3;
+    // @inject_tag: uri:"desc" form:"desc"
+    bool desc=4;
+    // @inject_tag: uri:"name" form:"name"
+    string name=5;
+    // @inject_tag: uri:"parentID" form:"parentID"
+    string parentID=6;
+    // @inject_tag: uri:"projectID" form:"projectID"
+    string projectID=7;
+    // @inject_tag: uri:"tenantID" form:"tenantID"
+    string tenantID=8;
+    // @inject_tag: uri:"ids" form:"ids"
+    repeated string ids=9;
+}
+
+message QueryMetadataResponse{
+    Code code=1;
+    string message=2;
+    repeated MetadataInfo data=3;
+    int64 pages=4;
+    int64 records=5;
+    int64 total=6;
+}
+
+message GetAllMetadataResponse{
+    Code code=1;
+    string message=2;
+    repeated MetadataInfo data=3;
+}
+
+message GetMetadataDetailResponse{
+    Code code=1;
+    string message=2;
+    MetadataInfo data=3;
+}
+
+message GetMetadataFieldsResponse{
+    Code code=1;
+    string message=2;
+    repeated MetadataField data=3;
+}

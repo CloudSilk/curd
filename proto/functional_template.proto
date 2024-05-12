@@ -1,0 +1,98 @@
+syntax="proto3";
+
+option java_multiple_files = true;
+option java_package = "cn.atali.curd.FunctionalTemplate";
+option java_outer_classname = "FunctionalTemplateProto";
+option objc_class_prefix = "FunctionalTemplateSRV";
+
+package curd;
+option go_package = "./;curd";
+
+import "curd_common.proto";
+
+service FunctionalTemplate{
+    rpc Add(FunctionalTemplateInfo)returns(CommonResponse){}
+    rpc Update(FunctionalTemplateInfo)returns(CommonResponse){}
+    rpc Delete(DelRequest)returns(CommonResponse){}
+    rpc Query(QueryFunctionalTemplateRequest)returns(QueryFunctionalTemplateResponse){}
+    rpc GetAll(GetAllRequest)returns(GetAllFunctionalTemplateResponse){}
+    rpc GetDetail(GetDetailRequest)returns(GetFunctionalTemplateDetailResponse){}
+    rpc Copy(GetDetailRequest)returns(CommonResponse){}
+    rpc Enable(EnableRequest)returns(CommonResponse){}
+}
+
+message FunctionalTemplateInfo {
+    string id=1;
+	//描述 
+ 	string description=2;
+	//自定义参数 
+ 	string params=3;
+	//语音 
+ 	string language=4;
+	//分组 
+ 	string group=5;
+	//名称 
+ 	string name=6;
+	//文件模版ID 
+    repeated string fileTemplateIDs=7;
+}
+
+message FunctionalTemplateFileInfo{
+    string functionalTemplate=1;
+    string fileTemplateID=2;
+    //文件后缀名
+    string fileExtension=3;
+}
+
+
+message QueryFunctionalTemplateRequest{
+    // @inject_tag: uri:"pageIndex" form:"pageIndex"
+    int64 pageIndex=1;
+    // @inject_tag: uri:"pageSize" form:"pageSize"
+    int64 pageSize=2;
+    // @inject_tag: uri:"sortConfig" form:"sortConfig"
+    string sortConfig=3;
+	//语音 
+    // @inject_tag: uri:"language" form:"language"
+    string language=6;
+	//分组 
+    // @inject_tag: uri:"group" form:"group"
+    string group=7;
+	//名称 
+    // @inject_tag: uri:"name" form:"name"
+    string name=8;
+}
+
+message QueryFunctionalTemplateResponse{
+    Code code=1;
+    string message=2;
+    repeated FunctionalTemplateInfo data=3;
+    int64 pages=4;
+    int64 records=5;
+    int64 total=6;
+}
+
+message GetAllFunctionalTemplateResponse{
+    Code code=1;
+    string message=2;
+    repeated FunctionalTemplateInfo data=3;
+}
+
+message GetFunctionalTemplateDetailResponse{
+    Code code=1;
+    string message=2;
+    FunctionalTemplateInfo data=3;
+}
+
+message GenFunctionalTemplateCodeResponse{
+    Code code=1;
+    string message=2;
+    repeated GenFunctionalTemplateCodeInfo data=3;
+}
+
+message GenFunctionalTemplateCodeInfo{
+    string fileName=1;
+    string dir=2;
+    string template=3;
+    string code=4;
+}

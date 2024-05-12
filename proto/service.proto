@@ -1,0 +1,122 @@
+syntax="proto3";
+package curd;
+option go_package = "./;curd";
+
+option java_multiple_files = true;
+option java_package = "cn.atali.curd";
+option java_outer_classname = "ServiceProto";
+option objc_class_prefix = "SERVICESRV";
+
+import "curd_common.proto";
+
+service Service{
+    rpc Add(ServiceInfo)returns(CommonResponse){}
+    rpc Update(ServiceInfo)returns(CommonResponse){}
+    rpc Delete(DelRequest)returns(CommonResponse){}
+    rpc Query(QueryServiceRequest)returns(QueryServiceResponse){}
+    rpc GetAll(GetAllRequest)returns(GetAllServiceResponse){}
+    rpc GetDetail(GetDetailRequest)returns(GetServiceDetailResponse){}
+    rpc Copy(GetDetailRequest)returns(CommonResponse){}
+    rpc Enable(EnableRequest)returns(CommonResponse){}
+}
+
+message ServiceInfo {
+    string id=1;
+    string params=2;
+	string name=5;
+	repeated CodeFileInfo codeFiles=6;
+	string displayName=7;
+	string package=8;
+    string projectID=9;
+    string tenantID=10;
+    repeated ServiceFunctionalInfo serviceFunctionals=11;
+}
+
+message CodeFileInfo {
+    string id=1;
+	string serviceID=2;
+	string name=3;
+	string dir=4;
+	string start=5;
+	string end=6;
+	string package=7;
+	string metadataID=8;
+	repeated string body=9;
+    string code=10;
+    string templateContent=11;
+    string params=12;
+    //是否启用
+    bool enable=13;
+}
+
+message ServiceFunctionalInfo{
+    string id=1;
+	//服务ID 
+ 	string serviceID=2;
+	//功能模版ID 
+ 	string functionalTemplateID=3;
+	//元数据ID 
+ 	string metadataID=4;
+	//自定义参数 
+ 	string params=5;
+    //生成配置文件
+    bool genConfig=6;
+    //是否启用
+    bool enable=7;
+}
+
+message QueryServiceRequest{
+    // @inject_tag: uri:"pageIndex" form:"pageIndex"
+    int64 pageIndex=1;
+    // @inject_tag: uri:"pageSize" form:"pageSize"
+    int64 pageSize=2;
+    // @inject_tag: uri:"orderField" form:"orderField"
+    string orderField=3;
+    // @inject_tag: uri:"desc" form:"desc"
+    bool desc=4;
+    // @inject_tag: uri:"name" form:"name"
+    string name=5;
+    // @inject_tag: uri:"projectID" form:"projectID"
+    string projectID=6;
+    // @inject_tag: uri:"tenantID" form:"tenantID"
+    string tenantID=7;
+}
+
+message QueryServiceResponse{
+    Code code=1;
+    string message=2;
+    repeated ServiceInfo data=3;
+    int64 pages=4;
+    int64 records=5;
+    int64 total=6;
+}
+
+message GetAllServiceResponse{
+    Code code=1;
+    string message=2;
+    repeated ServiceInfo data=3;
+}
+
+message GetServiceDetailResponse{
+    Code code=1;
+    string message=2;
+    ServiceInfo data=3;
+}
+
+message GenServiceResponse{
+    Code code=1;
+    string message=2;
+    ServiceInfo data=3;
+    string dir=4;
+}
+
+message QuickAddCodeFileRequest{
+    string serviceID=1;
+    string metadataID=2;
+    string package=3;
+    //1-简单 2-普通 3-复杂
+    int32 type=4;
+    bool needProvider=5;
+    bool isTree=6;
+    string params=7;
+}

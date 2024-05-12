@@ -1,0 +1,252 @@
+syntax="proto3";
+package curd;
+option go_package = "./;curd";
+
+option java_multiple_files = true;
+option java_package = "cn.atali.curd";
+option java_outer_classname = "PageProto";
+option objc_class_prefix = "PAGESRV";
+
+import "curd_common.proto";
+
+service Page{
+    rpc Add(PageInfo)returns(CommonResponse){}
+    rpc Update(PageInfo)returns(CommonResponse){}
+    rpc Delete(DelRequest)returns(CommonResponse){}
+    rpc Query(QueryPageRequest)returns(QueryPageResponse){}
+    rpc GetAll(QueryPageRequest)returns(GetAllPageResponse){}
+    rpc GetDetail(GetDetailRequest)returns(GetPageDetailResponse){}
+    rpc Copy(GetDetailRequest)returns(CommonResponse){}
+    rpc Enable(EnableRequest)returns(CommonResponse){}
+}
+
+message PageInfo{
+    string id=1;
+    string name=2;
+    bool enable=3;
+    string metadataID=4;
+    uint32 pageSize=5;
+    string editable=6;
+    bool showIndex=7;
+    bool showSelection=39;
+    PageToolBar toolBar=8;
+    repeated PageField fields=9;
+    string path=10;
+    string title=11;
+    string description=12;
+    string searchDefaultValue=13;
+    string editFormID=14;
+    string searchFormID=15;
+    string addFormID=16;
+    string viewFormID=17;
+    int32 type=18;
+    string submitBefore=19;
+    string submitAfter=20;
+    string loadDetailBefore=21;
+    string loadDetailAfter=22;
+    string queryBefore=23;
+    string queryAfter=24;
+    
+    string listAvatarField=25;
+    string listTitleField=26;
+    string listDescriptionField=27;
+    string listContentField=28;
+    int32 listLoadType=29;
+    string listKeyField=85;
+
+    string cardAvatarField=30;
+    string cardTitleField=31;
+    string cardDescriptionField=32;
+    string cardContentField=33;
+    int32 cardLoadType=34;
+    string cardImageField=35;
+    repeated PageButton buttons=36;
+
+    int64 createdAt=37;
+    int64 updatedAt=38;
+
+    bool proListGhost=40;
+    string proListCardActionProps=41;
+
+    bool proListShowTitle=42;
+    string proListTitleDataIndex=43;
+    string proListTitleValueType=44;
+    string proListTitleRender=45;
+
+    bool proListShowSubTitle=46;
+    string proListSubTitleDataIndex=47;
+    string proListSubTitleValueType=48;
+    string proListSubTitleRender=49;
+
+    bool proListShowMetaType=50;
+    string proListTypeDataIndex=51;
+    string proListTypeValueType=52;
+    string proListTypeRender=53;
+
+    bool proListShowAvatar=54;
+    string proListAvatarDataIndex=55;
+    string proListAvatarValueType=56;
+    string proListAvatarRender=57;
+
+    bool proListShowContent=58;
+    string proListContentDataIndex=59;
+    string proListContentValueType=60;
+    string proListContentRender=61;
+
+    bool proListShowMetaExtra=62;
+    string proListExtraDataIndex=63;
+    string proListExtraValueType=64;
+    string proListExtraRender=65;
+
+    string proListShowActions=66;
+    int32 proListShowType=67;
+    string proListShowExtra=68;
+    string proListItemClick=69;
+    string proListItemMouseEnter=70;
+
+    int32 listGridTypeGutter=71;
+    int32 listGridTypeColumn=72;
+    string listItemLayout=73;
+    bool listExpandable=74;
+    string projectID=75;
+    string tenantID=76;
+    string addDefaultValue=77;
+    string labelField=78;
+    string valueField=79;
+    int32 scrollX=80;
+    //系统必须要有的数据
+    bool isMust=81;
+    //子列表，应用于左右分栏
+    bool isChild=82;
+    //子列表的PageName,多个使用逗号隔开，应用于左右分栏等
+    string pages=83;
+    bool bordered=84;
+}
+
+message PageToolBar{
+    string id=1;
+    string pageID=2;
+    //是否显示全屏按钮
+    bool fullScreen=3;
+    //是否显示刷新按钮
+    bool reload=4;
+    //是否显示设置按钮
+    bool setting=5;
+    //
+    string render=6;
+    //是否显示新增按钮
+    bool showAdd=7;
+    //点击新增按钮时执行脚本
+    string addScript=8;
+    //新增按钮权限
+    string addPermission=9;
+    //是否显示导出按钮
+    bool showExport=10;
+    //导出API接口地址
+    string exportUri=11;
+    //是否显示可选框
+    bool rowSelection=12;
+    //是否显示批量删除按钮
+    bool showBatchDel=13;
+    bool showImport=14;
+    string batchDelUri=15;
+    string importUri=16;
+    bool importMulti=17;
+    int32 importMaxCount=18;
+    string importFormID=19;
+}
+
+message PageField{
+    string id=1;
+    string pageID=2;
+    string name=3;
+    string title=4;
+    bool copyable=5;
+    bool ellipsis=6;
+    bool rowKey=7;
+    int32 sort=8;
+    bool showInTable=9;
+    string valueEnum=10;
+    string component=11;
+    string componentProps=12;
+    string dataType=13;
+    string labelField=14;
+    string valueField=15;
+    bool enableSort=16;
+    string fixed=17;
+    //对齐方式
+    string align=18;
+    //列宽度
+    string width=19;
+}
+
+message PageButton{
+    string id=1;
+    string pageID=2;
+    string key=3;
+    string label=4;
+    bool expanded=5;
+    string showType=6;
+    string href=7;
+    string hrefFunc=8;
+    string script=9;
+    int32 index=10;
+    //是否启用
+    bool enable=11;
+    //按钮权限
+    string permission=12;
+    //按钮显示位置，0-显示在列表行 1-在搜索框显示
+    int32 showPosition=13;
+    string formID=14;
+    string hiddenScript=15;
+}
+
+message QueryPageRequest{
+    // @inject_tag: uri:"pageIndex" form:"pageIndex"
+    int64 pageIndex=1;
+    // @inject_tag: uri:"pageSize" form:"pageSize"
+    int64 pageSize=2;
+    // @inject_tag: uri:"orderField" form:"orderField"
+    string orderField=3;
+    // @inject_tag: uri:"desc" form:"desc"
+    bool desc=4;
+    // @inject_tag: uri:"name" form:"name"
+    string name=5;
+    // @inject_tag: uri:"enable" form:"enable"
+    int32 enable=6;
+    // @inject_tag: uri:"type" form:"type"
+    int32 type=7;
+    // @inject_tag: uri:"ids" form:"ids"
+    repeated string ids=8;
+    // @inject_tag: uri:"projectID" form:"projectID"
+    string projectID=9;
+    // @inject_tag: uri:"tenantID" form:"tenantID"
+    string tenantID=10;
+    // 包含基础页面配置数据,例如用户管理、角色管理等
+    // @inject_tag: uri:"inclusiveBasic" form:"inclusiveBasic"
+    bool inclusiveBasic=11;
+    // 是否子表单 0-查询全部 1-查询子表单 2-查询父表单
+    // @inject_tag: uri:"isChild" form:"isChild"
+    int32 isChild=12;
+}
+
+message QueryPageResponse{
+    Code code=1;
+    string message=2;
+    repeated PageInfo data=3;
+    int64 pages=4;
+    int64 records=5;
+    int64 total=6;
+}
+
+message GetAllPageResponse{
+    Code code=1;
+    string message=2;
+    repeated PageInfo data=3;
+}
+
+message GetPageDetailResponse{
+    Code code=1;
+    string message=2;
+    PageInfo data=3;
+}
