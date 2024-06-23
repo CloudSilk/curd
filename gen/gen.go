@@ -73,6 +73,7 @@ func genCode(tpl *curdmodel.Template, ctx *GenContext) (string, error) {
 		"GenSwagQueryParam":           GenSwagQueryParam,
 		"GetTemplateById":             GetTemplateById,
 		"GetMetadataById":             GetMetadataById,
+		"GetMetaDataNameByID":         GetMetaDataNameByID,
 		"GetMetadataByName":           GetMetadataByName,
 		"ConvertTSType":               ConvertTSType,
 		"GenCreateIndexsql":           GenCreateIndexsql,

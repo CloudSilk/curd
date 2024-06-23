@@ -69,6 +69,14 @@ func GetMetadataById(mdID string) (*curdmodel.Metadata, error) {
 	return result, nil
 }
 
+func GetMetaDataNameByID(mdID string) (string, error) {
+	md, err := GetMetadataById(mdID)
+	if err != nil {
+		return "", err
+	}
+	return md.Name, nil
+}
+
 func InitGenCode(md *curdmodel.Metadata) {
 	var uniqueFields []string
 	var fields []string
