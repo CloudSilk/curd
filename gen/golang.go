@@ -10,7 +10,7 @@ import (
 	"github.com/CloudSilk/pkg/utils/log"
 )
 
-func GenStructField(f *curdmodel.MetadataField) stdtpl.HTML {
+func GenStructField(f *curdmodel.MetadataField, m *curdmodel.Metadata) stdtpl.HTML {
 	if f.Name == "UpdatedAt" || f.Name == "CreatedAt" || f.Name == "DeletedAt" || f.Name == "ID" {
 		return ""
 	}
@@ -30,7 +30,8 @@ func GenStructField(f *curdmodel.MetadataField) stdtpl.HTML {
 			list = append(list, fmt.Sprintf("comment:%s", f.Comment))
 		}
 		if f.Unique {
-			list = append(list, "uniqueindex:uidx1")
+			//一索引的名称加上表名:因为sqlite里面唯一索引必须全局唯一
+			list = append(list, fmt.Sprintf("uniqueindex:%s_uidx1", m.Name))
 		}
 	}
 
