@@ -146,7 +146,7 @@ func QueryForm(req *apipb.QueryFormRequest, resp *apipb.QueryFormResponse, prelo
 	if preload {
 		resp.Records, resp.Pages, err = dbClient.PageQueryWithPreload(db, req.PageSize, req.PageIndex, OrderStr, []string{"Versions"}, &forms)
 	} else {
-		resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &forms)
+		resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &forms, nil)
 	}
 	if err != nil {
 		resp.Code = model.InternalServerError

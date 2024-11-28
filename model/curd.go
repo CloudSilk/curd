@@ -101,7 +101,7 @@ func Query(req *QueryRequest, resp *QueryResponse) {
 		}
 	}
 
-	resp.Total, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.Current, OrderStr, &resp.Data)
+	resp.Total, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.Current, OrderStr, &resp.Data, nil)
 	if err != nil {
 		resp.Code = model.InternalServerError
 		resp.Message = err.Error()

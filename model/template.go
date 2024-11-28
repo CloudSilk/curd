@@ -67,7 +67,7 @@ func QueryTemplate(req *apipb.QueryTemplateRequest, resp *apipb.QueryTemplateRes
 	}
 	var err error
 	var result []*Template
-	resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &result)
+	resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &result, nil)
 	if err != nil {
 		resp.Code = model.InternalServerError
 		resp.Message = err.Error()

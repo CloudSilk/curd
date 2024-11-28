@@ -129,7 +129,7 @@ func QueryMetadata(req *apipb.QueryMetadataRequest, resp *apipb.QueryMetadataRes
 	if preload {
 		resp.Records, resp.Pages, err = dbClient.PageQueryWithPreload(db, req.PageSize, req.PageIndex, OrderStr, []string{"MetadataFields", clause.Associations}, &metadatas)
 	} else {
-		resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &metadatas)
+		resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &metadatas, nil)
 	}
 	if err != nil {
 		resp.Code = model.InternalServerError

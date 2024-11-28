@@ -98,17 +98,17 @@ func QueryService(req *apipb.QueryServiceRequest, resp *apipb.QueryServiceRespon
 		db = db.Where("project_id = ?", req.ProjectID)
 	}
 
-	OrderStr := "`name`"
+	orderStr := "`name`"
 	if req.OrderField != "" {
 		if req.Desc {
-			OrderStr = req.OrderField + " desc"
+			orderStr = req.OrderField + " desc"
 		} else {
-			OrderStr = req.OrderField
+			orderStr = req.OrderField
 		}
 	}
 	var err error
 	var list []*Service
-	resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &list)
+	resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, orderStr, &list, nil)
 	if err != nil {
 		resp.Code = apipb.Code_InternalServerError
 		resp.Message = err.Error()

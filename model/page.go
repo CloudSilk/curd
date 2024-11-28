@@ -352,7 +352,7 @@ func QueryPage(req *apipb.QueryPageRequest, resp *apipb.QueryPageResponse, prelo
 	if preload {
 		resp.Records, resp.Pages, err = dbClient.PageQueryWithPreload(db, req.PageSize, req.PageIndex, OrderStr, []string{"Metadata.MetadataFields", "Fields", clause.Associations}, &pages)
 	} else {
-		resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &pages)
+		resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &pages, nil)
 	}
 
 	if err != nil {

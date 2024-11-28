@@ -199,19 +199,19 @@ func QueryCell(req *apipb.QueryCellRequest, resp *apipb.QueryCellResponse, prelo
 		db = db.Where("is_edge=?", req.IsEdge == 1)
 	}
 
-	// OrderStr := "`system`,`index`"
-	OrderStr := "`updated_at` desc"
+	// orderStr := "`system`,`index`"
+	orderStr := "`updated_at` desc"
 	if req.OrderField != "" {
 		if req.Desc {
-			OrderStr = req.OrderField + " desc"
+			orderStr = req.OrderField + " desc"
 		} else {
-			OrderStr = req.OrderField
+			orderStr = req.OrderField
 		}
 	}
 	var err error
 	var list []*Cell
 
-	resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, OrderStr, &list)
+	resp.Records, resp.Pages, err = dbClient.PageQuery(db, req.PageSize, req.PageIndex, orderStr, &list, nil)
 	if err != nil {
 		resp.Code = apipb.Code_InternalServerError
 		resp.Message = err.Error()
