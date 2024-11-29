@@ -60,6 +60,8 @@ message QueryFileTemplateRequest{
     string language=5;
     // @inject_tag: uri:"group" form:"group"
     string group=6;
+    // @inject_tag: uri:"dir" form:"dir"
+    string dir=7;
 }
 
 message QueryFileTemplateResponse{

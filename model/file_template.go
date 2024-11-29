@@ -59,6 +59,9 @@ func QueryFileTemplate(req *apipb.QueryFileTemplateRequest, resp *apipb.QueryFil
 	if req.Group != "" {
 		db = db.Where("`group` = ?", req.Group)
 	}
+	if req.Dir != "" {
+		db = db.Where("dir LIKE ?", "%"+req.Dir+"%")
+	}
 
 	orderStr, err := utils.GenerateOrderString(req.SortConfig, "`language`,`group`,`name`")
 	if err != nil {
